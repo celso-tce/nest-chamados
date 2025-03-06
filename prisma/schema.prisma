@@ -20,12 +20,12 @@ model Chamado {
   id        Int      @id @default(autoincrement())
   titulo    String
   descricao String?
+  status    Status
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  status    Status
 
   pessoaId Int
-  pessoa   Pessoa @relation(references: [id], fields: [pessoaId])
+  pessoa   Pessoa @relation(fields: [pessoaId], references: [id])
 }
 
 enum Status {
